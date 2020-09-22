@@ -27,14 +27,15 @@ public class UserController {
     private UserValidator userValidator;
 
     @GetMapping("/login")
-    public String Login() {
+    public String Login(Model model) {
 
-
+        model.addAttribute("test","Hello Model");
         return "/user/login";
     }
 
     @GetMapping("/join")
     public String registration(Model model) {
+
         model.addAttribute("userForm", new UserBean());
 
         return "/user/join";

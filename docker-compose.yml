@@ -1,0 +1,9 @@
+version: "3.2"
+
+services:
+
+  dev:
+    container_name: dev_panel
+    build: .
+    ports:
+      - "7070:7070"
