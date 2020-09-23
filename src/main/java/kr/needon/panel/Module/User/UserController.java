@@ -43,14 +43,15 @@ public class UserController {
 
     @PostMapping("/join")
     public String registration(@ModelAttribute("userForm") UserBean userForm, BindingResult bindingResult) {
-        userValidator.validate(userForm, bindingResult);
+
+
+        //userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "/user/join";
         }
 
         userService.save(userForm);
-
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
         return "redirect:/";

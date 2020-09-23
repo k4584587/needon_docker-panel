@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    <form th:action="@{/user/join}" th:object="${userForm}" th:method="post">
 
+        <label>
+            <input type="text" th:field="*{username}" placeholder="Username">
+        </label> <br />
+
+        <label>
+            <input type="password" th:field="*{password}" placeholder="Password">
+        </label> <br />
+
+        <input type="submit" value="Submit" />
+
+    </form>
 </body>
 </html>

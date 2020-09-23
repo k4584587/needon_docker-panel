@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<th:block th:text="${test}" />
+<form th:action="@{/user/login}" th:method="post">
+
+    <label>
+        <input type="text" name="username" placeholder="Username">
+    </label> <br />
+
+    <label>
+        <input type="password" name="password" placeholder="Password">
+    </label> <br />
+
+    <input type="submit" value="Submit" />
+
+</form>
 </body>
 </html>

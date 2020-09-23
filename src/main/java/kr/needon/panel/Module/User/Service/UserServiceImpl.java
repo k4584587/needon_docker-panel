@@ -1,5 +1,6 @@
 package kr.needon.panel.Module.User.Service;
 
+import kr.needon.panel.Module.User.Model.RoleBean;
 import kr.needon.panel.Module.User.Model.UserBean;
 import kr.needon.panel.Module.User.Repository.RoleRepository;
 import kr.needon.panel.Module.User.Repository.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -28,6 +30,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    private static String mapper = "UserMapper.";
+
     @Override
     public void save(UserBean user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -42,6 +46,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String testMybatis() {
-        return sqlSession.selectOne("TestMapper.testSql");
+        return sqlSession.selectOne(mapper + "testSql");
     }
+
+    @Override
+    public List<RoleBean> getUserRole() {
+        return sqlSession.selectList(mapper + "getUserRole");
+    }
+
+    @Override
+    public int insertUserRole(String name) {
+        return sqlSession.insert(mapper + "insertUserRole", name);
+    }
+
+    @Override
+    public int userCount() {
+        return sqlSession.selectOne(mapper + "userCount");
+    }
+
+
 }

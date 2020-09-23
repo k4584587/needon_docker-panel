@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/resources/**", "/user/join", "/logout", "/h2-console/**").permitAll()
+                .antMatchers("/","/resources/**", "/user/join", "/logout", "/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().ignoringAntMatchers("/h2-console/**").and()
                 .formLogin()

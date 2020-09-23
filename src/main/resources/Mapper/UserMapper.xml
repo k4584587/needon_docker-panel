@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="UserMapper">
+
+    <select id="userCount" resultType="int"><![CDATA[
+        SELECT COUNT(*) FROM NB_100_USER;
+    ]]></select>
+
+    <select id="getUserRole" resultType="kr.needon.panel.Module.User.Model.RoleBean"><![CDATA[
+        select
+        *
+        from
+        NB_120_ROLE
+    ]]></select>
+
+
+    <insert id="insertUserRole">
+        INSERT INTO PUBLIC.NB_120_ROLE (NAME) VALUES (#{name})
+    </insert>
+
+</mapper>
